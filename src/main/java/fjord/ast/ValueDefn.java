@@ -1,91 +1,93 @@
 package fjord.ast;
 
-import java.util.Optional;
-
 import fjord.ast.expr.Expr;
 import fjord.ast.pat.Pat;
 import fjord.ast.typar.TyparDefns;
 import fjord.ast.type.Type;
 import fjord.types.TypeClass;
 
+import java.util.Optional;
+
 public class ValueDefn implements ModuleElem {
 
-  private final boolean mutable;
+    private final boolean mutable;
 
-  private final Access access;
+    private final Access access;
 
-  private final Pat pattern;
+    private final Pat pattern;
 
-  private final Optional<TyparDefns> typarDefns;
+    private final Optional<TyparDefns> typarDefns;
 
-  private final Optional<Type> returnType;
+    private final Optional<Type> returnType;
 
-  private final Expr expr;
+    private final Expr expr;
 
-  private Optional<TypeClass> typeClass = Optional.empty();
+    private Optional<TypeClass> typeClass = Optional.empty();
 
-  public ValueDefn(boolean mutable, Access access, Pat pattern, TyparDefns typarDefns, Type returnType, Expr expr) {
-    this.mutable = mutable;
-    this.access = access != null ? access : Access.Public;
-    this.pattern = pattern;
-    this.typarDefns = Optional.ofNullable(typarDefns);
-    this.returnType = Optional.ofNullable(returnType);
-    this.expr = expr;
-  }
+    public ValueDefn(boolean mutable, Access access, Pat pattern, TyparDefns typarDefns, Type returnType, Expr expr) {
+        this.mutable = mutable;
+        this.access = access != null ? access : Access.Public;
+        this.pattern = pattern;
+        this.typarDefns = Optional.ofNullable(typarDefns);
+        this.returnType = Optional.ofNullable(returnType);
+        this.expr = expr;
+    }
 
-  public String pattern() {
-    return pattern.toString();
-  }
+    public String pattern() {
+        return pattern.toString();
+    }
 
-  public String expr() {
-    return expr.toString();
-  }
+    public String expr() {
+        return expr.toString();
+    }
 
-  @Override public void accept(NodeVisitor visitor) {
-    visitor.visitBefore(this);
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visitBefore(this);
 
-    if (pattern != null)
-      pattern.accept(visitor);
+        if (pattern != null)
+            pattern.accept(visitor);
 
-    if (expr != null)
-      expr.accept(visitor);
+        if (expr != null)
+            expr.accept(visitor);
 
-    visitor.visitAfter(this);
-  }
+        visitor.visitAfter(this);
+    }
 
-  @Override public String toString() {
-    return String.format("let %s = %s", pattern, expr);
-  }
+    @Override
+    public String toString() {
+        return String.format("let %s = %s", pattern, expr);
+    }
 
-  public Pat getPattern() {
-    return pattern;
-  }
+    public Pat getPattern() {
+        return pattern;
+    }
 
-  public Expr getExpr() {
-    return expr;
-  }
+    public Expr getExpr() {
+        return expr;
+    }
 
-  public boolean isMutable() {
-    return mutable;
-  }
+    public boolean isMutable() {
+        return mutable;
+    }
 
-  public Access getAccess() {
-    return access;
-  }
+    public Access getAccess() {
+        return access;
+    }
 
-  public Optional<TyparDefns> getTyparDefns() {
-    return typarDefns;
-  }
+    public Optional<TyparDefns> getTyparDefns() {
+        return typarDefns;
+    }
 
-  public Optional<Type> getReturnType() {
-    return returnType;
-  }
+    public Optional<Type> getReturnType() {
+        return returnType;
+    }
 
-  public void setTypeClass(TypeClass ty) {
-    this.typeClass = Optional.of(ty);
-  }
+    public TypeClass getTypeClass() {
+        return typeClass.get();
+    }
 
-  public TypeClass getTypeClass() {
-    return typeClass.get();
-  }
+    public void setTypeClass(TypeClass ty) {
+        this.typeClass = Optional.of(ty);
+    }
 }

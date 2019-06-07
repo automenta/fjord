@@ -3,32 +3,34 @@ package fjord.ast;
 import fjord.types.TypeClass;
 
 public class Const implements Node {
-  public Const(String value) {
-    this.value = value;
-    this.typeClass = null;
-  }
+    private final String value;
+    private final TypeClass typeClass;
 
-  public Const(String value, TypeClass typeClass) {
-    this.value = value;
-    this.typeClass = typeClass;
-  }
+    public Const(String value) {
+        this.value = value;
+        this.typeClass = null;
+    }
 
-  public Object parseValue() {
-    return typeClass.parseValue(value);
-  }
+    public Const(String value, TypeClass typeClass) {
+        this.value = value;
+        this.typeClass = typeClass;
+    }
 
-  public TypeClass getTypeClass() {
-    return typeClass;
-  }
+    public Object parseValue() {
+        return typeClass.parseValue(value);
+    }
 
-  @Override public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    public TypeClass getTypeClass() {
+        return typeClass;
+    }
 
-  @Override public String toString() {
-    return value;
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  private final String value;
-  private final TypeClass typeClass;
+    @Override
+    public String toString() {
+        return value;
+    }
 }

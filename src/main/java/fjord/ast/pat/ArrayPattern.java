@@ -5,9 +5,9 @@ import fjord.ast.NodeWithChildren;
 
 public class ArrayPattern extends NodeWithChildren<Pat> implements Pat {
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

@@ -1,24 +1,24 @@
 package fjord.ast.expr;
 
-import java.util.List;
-
 import fjord.ast.NodeVisitor;
+
+import java.util.List;
 
 public class RecordExpression implements Expr {
 
-  private final List<FieldInitializer> fieldInitializers;
+    private final List<FieldInitializer> fieldInitializers;
 
-  public RecordExpression(List<FieldInitializer> fieldInitializers) {
-    this.fieldInitializers = fieldInitializers;
-  }
+    public RecordExpression(List<FieldInitializer> fieldInitializers) {
+        this.fieldInitializers = fieldInitializers;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public List<FieldInitializer> getFieldInitializers() {
-    return fieldInitializers;
-  }
+    public List<FieldInitializer> getFieldInitializers() {
+        return fieldInitializers;
+    }
 
 }

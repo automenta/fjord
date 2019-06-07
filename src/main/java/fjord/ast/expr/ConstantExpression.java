@@ -5,24 +5,24 @@ import fjord.ast.NodeVisitor;
 
 public class ConstantExpression implements Expr {
 
-  private final Const cons;
+    private final Const cons;
 
-  public ConstantExpression(Const cons) {
-    this.cons = cons;
-  }
+    public ConstantExpression(Const cons) {
+        this.cons = cons;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public Const getCons() {
-    return cons;
-  }
+    public Const getCons() {
+        return cons;
+    }
 
-  @Override
-  public String toString() {
-    return cons.toString();
-  }
+    @Override
+    public String toString() {
+        return cons.toString();
+    }
 
 }

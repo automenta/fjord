@@ -4,19 +4,19 @@ import fjord.ast.NodeVisitor;
 
 public class IdentPatParam implements PatParam {
 
-  private final String ident;
+    private final String ident;
 
-  public IdentPatParam(String ident) {
-    this.ident = ident;
-  }
+    public IdentPatParam(String ident) {
+        this.ident = ident;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public String getIdent() {
-    return ident;
-  }
+    public String getIdent() {
+        return ident;
+    }
 
 }

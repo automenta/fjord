@@ -2,21 +2,23 @@ package fjord.ast;
 
 public class CompilerDirectiveDecl implements ModuleElem {
 
-  public CompilerDirectiveDecl(String ident) {
-    this.ident = ident;
-  }
+    private String ident;
 
-  public String getIdent() {
-    return ident;
-  }
+    public CompilerDirectiveDecl(String ident) {
+        this.ident = ident;
+    }
 
-  @Override public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    public String getIdent() {
+        return ident;
+    }
 
-  @Override public String toString() {
-    return "# " + ident;
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  private String ident;
+    @Override
+    public String toString() {
+        return "# " + ident;
+    }
 }

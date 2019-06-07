@@ -5,13 +5,13 @@ import fjord.ast.NodeWithChildren;
 
 public class TupleType extends NodeWithChildren<Type> implements Type {
 
-  public TupleType(Type firstElem) {
-    super(firstElem);
-  }
+    public TupleType(Type firstElem) {
+        super(firstElem);
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

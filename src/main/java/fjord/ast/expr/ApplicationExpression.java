@@ -5,36 +5,36 @@ import fjord.ast.Operator;
 
 public class ApplicationExpression implements Expr {
 
-  private final Expr left;
+    private final Expr left;
 
-  private final Operator op;
+    private final Operator op;
 
-  private final Expr right;
+    private final Expr right;
 
-  public ApplicationExpression(Expr left, Operator op, Expr right) {
-    this.left  = left;
-    this.op    = op;
-    this.right = right;
-  }
+    public ApplicationExpression(Expr left, Operator op, Expr right) {
+        this.left = left;
+        this.op = op;
+        this.right = right;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visitBefore(this);
-    left.accept(visitor);
-    right.accept(visitor);
-    visitor.visitAfter(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visitBefore(this);
+        left.accept(visitor);
+        right.accept(visitor);
+        visitor.visitAfter(this);
+    }
 
-  public Expr getRight() {
-    return right;
-  }
+    public Expr getRight() {
+        return right;
+    }
 
-  public Operator op() {
-    return op;
-  }
+    public Operator op() {
+        return op;
+    }
 
-  public Expr getLeft() {
-    return left;
-  }
+    public Expr getLeft() {
+        return left;
+    }
 
 }

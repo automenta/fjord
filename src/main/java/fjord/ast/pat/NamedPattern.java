@@ -4,24 +4,24 @@ import fjord.ast.NodeVisitor;
 
 public class NamedPattern implements Pat {
 
-  private final String ident;
+    private final String ident;
 
-  public NamedPattern(String ident) {
-    this.ident = ident;
-  }
+    public NamedPattern(String ident) {
+        this.ident = ident;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public String getIdent() {
-    return ident;
-  }
+    public String getIdent() {
+        return ident;
+    }
 
-  @Override
-  public String toString() {
-    return ident;
-  }
+    @Override
+    public String toString() {
+        return ident;
+    }
 
 }

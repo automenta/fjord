@@ -1,45 +1,43 @@
 package fjord.ast.typedefn;
 
-import java.util.Collections;
-import java.util.List;
-
 import fjord.ast.Node;
 import fjord.ast.NodeVisitor;
 import fjord.ast.attribute.Attribute;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ExceptionAbbreviation implements Node {
 
-  private List<Attribute> attributes;
+    private final String alias;
+    private final String exceptionName;
+    private List<Attribute> attributes;
 
-  private final String alias;
+    public ExceptionAbbreviation(List<Attribute> attributes, String alias, String exceptionName) {
+        this.setAttributes(attributes != null ? attributes : Collections.emptyList());
+        this.alias = alias;
+        this.exceptionName = exceptionName;
+    }
 
-  private final String exceptionName;
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public ExceptionAbbreviation(List<Attribute> attributes, String alias, String exceptionName) {
-    this.setAttributes(attributes != null ? attributes : Collections.<Attribute>emptyList());
-    this.alias = alias;
-    this.exceptionName = exceptionName;
-  }
+    public String getExceptionName() {
+        return exceptionName;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    public String getAlias() {
+        return alias;
+    }
 
-  public String getExceptionName() {
-    return exceptionName;
-  }
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
 
-  public String getAlias() {
-    return alias;
-  }
-
-  public List<Attribute> getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(List<Attribute> attributes) {
-    this.attributes = attributes;
-  }
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+    }
 
 }

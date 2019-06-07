@@ -2,10 +2,10 @@ package fjord.ast;
 
 public enum Access {
 
-  Public,
+    Public,
 
-  Private,
+    Private,
 
-  Internal
+    Internal
 
 }

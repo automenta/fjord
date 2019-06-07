@@ -1,32 +1,32 @@
 package fjord.ast.typedefn;
 
-import java.util.List;
-
 import fjord.ast.ModuleElem;
 import fjord.ast.NodeVisitor;
 
+import java.util.List;
+
 public class TypeExtension implements ModuleElem {
 
-  private final TypeName typeName;
+    private final TypeName typeName;
 
-  private final List<TypeDefnElement> typeDefnElements;
+    private final List<TypeDefnElement> typeDefnElements;
 
-  public TypeExtension(TypeName typeName, List<TypeDefnElement> typeDefnElements) {
-    this.typeName = typeName;
-    this.typeDefnElements = typeDefnElements;
-  }
+    public TypeExtension(TypeName typeName, List<TypeDefnElement> typeDefnElements) {
+        this.typeName = typeName;
+        this.typeDefnElements = typeDefnElements;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public List<TypeDefnElement> getTypeDefnElements() {
-    return typeDefnElements;
-  }
+    public List<TypeDefnElement> getTypeDefnElements() {
+        return typeDefnElements;
+    }
 
-  public TypeName getTypeName() {
-    return typeName;
-  }
+    public TypeName getTypeName() {
+        return typeName;
+    }
 
 }

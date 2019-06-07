@@ -1,60 +1,56 @@
 package fjord.ast.typedefn;
 
-import java.util.Set;
-
-import java.util.Optional;
 import com.google.common.collect.Sets;
-
 import fjord.ast.Node;
 import fjord.ast.NodeVisitor;
 import fjord.ast.typar.TyparDefns;
 
+import java.util.Optional;
+import java.util.Set;
+
 public class MemberSig implements Node {
 
-  public static enum Property {
+    private final String ident;
+    private final Optional<TyparDefns> typarDefns;
+    private final CurriedSig curriedSig;
+    private final Set<Property> properties;
 
-    None,
+    public MemberSig(String ident, TyparDefns typarDefns, CurriedSig curriedSig, Property... properties) {
+        this.ident = ident;
+        this.typarDefns = Optional.ofNullable(typarDefns);
+        this.curriedSig = curriedSig;
+        this.properties = Sets.newHashSet(properties);
+    }
 
-    Get,
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-    Set
+    public String getIdent() {
+        return ident;
+    }
 
-  }
+    public Optional<TyparDefns> getTyparDefns() {
+        return typarDefns;
+    }
 
-  private final String ident;
+    public CurriedSig getCurriedSig() {
+        return curriedSig;
+    }
 
-  private final Optional<TyparDefns> typarDefns;
+    public Set<Property> getProperties() {
+        return properties;
+    }
 
-  private final CurriedSig curriedSig;
+    public enum Property {
 
-  private final Set<Property> properties;
+        None,
 
-  public MemberSig(String ident, TyparDefns typarDefns, CurriedSig curriedSig, Property... properties) {
-    this.ident = ident;
-    this.typarDefns = Optional.ofNullable(typarDefns);
-    this.curriedSig = curriedSig;
-    this.properties  = Sets.newHashSet(properties);
-  }
+        Get,
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+        Set
 
-  public String getIdent() {
-    return ident;
-  }
-
-  public Optional<TyparDefns> getTyparDefns() {
-    return typarDefns;
-  }
-
-  public CurriedSig getCurriedSig() {
-    return curriedSig;
-  }
-
-  public Set<Property> getProperties() {
-    return properties;
-  }
+    }
 
 }

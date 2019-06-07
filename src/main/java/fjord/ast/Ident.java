@@ -1,21 +1,23 @@
 package fjord.ast;
 
 public class Ident implements Node {
-  public Ident(String value) {
-    this.value = value;
-  }
+    private final String value;
 
-  public String getValue() {
-    return value;
-  }
+    public Ident(String value) {
+        this.value = value;
+    }
 
-  @Override public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    public String getValue() {
+        return value;
+    }
 
-  @Override public String toString() {
-    return value;
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  private final String value;
+    @Override
+    public String toString() {
+        return value;
+    }
 }

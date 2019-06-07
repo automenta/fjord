@@ -5,19 +5,19 @@ import fjord.ast.NodeVisitor;
 
 public class ConstantPatParam implements PatParam {
 
-  private final Const constant;
+    private final Const constant;
 
-  public ConstantPatParam(Const constant) {
-    this.constant = constant;
-  }
+    public ConstantPatParam(Const constant) {
+        this.constant = constant;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
-  public Const getConstant() {
-    return constant;
-  }
+    public Const getConstant() {
+        return constant;
+    }
 
 }

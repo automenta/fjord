@@ -6,26 +6,26 @@ import fjord.ast.type.Type;
 
 public class EnumDecompositionConstraint implements Constraint {
 
-  private final Typar typar;
+    private final Typar typar;
 
-  private final Type type;
+    private final Type type;
 
-  public EnumDecompositionConstraint(Typar typar, Type type) {
-    this.typar = typar;
-    this.type = type;
-  }
+    public EnumDecompositionConstraint(Typar typar, Type type) {
+        this.typar = typar;
+        this.type = type;
+    }
 
-  public Typar getTypar() {
-    return typar;
-  }
+    public Typar getTypar() {
+        return typar;
+    }
 
-  public Type getType() {
-    return type;
-  }
+    public Type getType() {
+        return type;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

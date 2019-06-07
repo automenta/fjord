@@ -5,19 +5,19 @@ import fjord.ast.typar.Typar;
 
 public class UnmanagedConstraint implements Constraint {
 
-  private final Typar typar;
+    private final Typar typar;
 
-  public UnmanagedConstraint(Typar typar) {
-    this.typar = typar;
-  }
+    public UnmanagedConstraint(Typar typar) {
+        this.typar = typar;
+    }
 
-  public Typar getTypar() {
-    return typar;
-  }
+    public Typar getTypar() {
+        return typar;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

@@ -5,13 +5,13 @@ import fjord.ast.NodeWithChildren;
 
 public class ListExpression extends NodeWithChildren<Expr> implements Expr {
 
-  public void addExpr(Expr expr) {
-    addChild(expr);
-  }
+    public void addExpr(Expr expr) {
+        addChild(expr);
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

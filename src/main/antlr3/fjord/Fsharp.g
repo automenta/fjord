@@ -12,7 +12,7 @@ options {
 }
 
 @header {
-  package fjord.compiler;
+  package fjord;
 
   import java.util.Collections;
   import java.util.Arrays;
@@ -31,7 +31,7 @@ options {
 }
 
 @lexer::header {
-  package fjord.compiler;
+  package fjord;
 
   import fjord.ast.*;
 }

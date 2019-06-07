@@ -5,28 +5,28 @@ import fjord.ast.typedefn.FunctionDefn;
 
 public class FunctionDefinitionExpression implements Expr {
 
-  private final FunctionDefn functionDefn;
+    private final FunctionDefn functionDefn;
 
-  private final Expr expr;
+    private final Expr expr;
 
-  public FunctionDefinitionExpression(FunctionDefn functionDefn, Expr expr) {
-    this.functionDefn = functionDefn;
-    this.expr = expr;
-  }
+    public FunctionDefinitionExpression(FunctionDefn functionDefn, Expr expr) {
+        this.functionDefn = functionDefn;
+        this.expr = expr;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
-
-
-  public Expr getExpr() {
-    return expr;
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 
-  public FunctionDefn getFunctionDefn() {
-    return functionDefn;
-  }
+    public Expr getExpr() {
+        return expr;
+    }
+
+
+    public FunctionDefn getFunctionDefn() {
+        return functionDefn;
+    }
 
 }

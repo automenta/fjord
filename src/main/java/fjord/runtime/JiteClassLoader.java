@@ -1,15 +1,16 @@
 package fjord.runtime;
 
-import me.qmx.jitescript.*;
+import me.qmx.jitescript.JDKVersion;
+import me.qmx.jitescript.JiteClass;
 
 public class JiteClassLoader extends ClassLoader {
-  public static JiteClassLoader INSTANCE = new JiteClassLoader();
+    public static JiteClassLoader INSTANCE = new JiteClassLoader();
 
-  private JiteClassLoader() {
-  }
+    private JiteClassLoader() {
+    }
 
-  public Class<?> define(JiteClass jiteClass) {
-    byte[] classBytes = jiteClass.toBytes(JDKVersion.V1_7);
-    return super.defineClass(jiteClass.getClassName(), classBytes, 0, classBytes.length);
-  }
+    public Class<?> define(JiteClass jiteClass) {
+        byte[] classBytes = jiteClass.toBytes(JDKVersion.V1_7);
+        return super.defineClass(jiteClass.getClassName(), classBytes, 0, classBytes.length);
+    }
 }

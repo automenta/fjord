@@ -4,26 +4,26 @@ import fjord.ast.NodeVisitor;
 
 public class ArrayType implements Type {
 
-  private final Type type;
+    private final Type type;
 
-  private final int dimensions;
+    private final int dimensions;
 
-  public ArrayType(Type type, int dimensions) {
-    this.type = type;
-    this.dimensions = dimensions;
-  }
+    public ArrayType(Type type, int dimensions) {
+        this.type = type;
+        this.dimensions = dimensions;
+    }
 
-  public Type getType() {
-    return type;
-  }
+    public Type getType() {
+        return type;
+    }
 
-  public int getDimensions() {
-    return dimensions;
-  }
+    public int getDimensions() {
+        return dimensions;
+    }
 
-  @Override
-  public void accept(NodeVisitor visitor) {
-    visitor.visit(this);
-  }
+    @Override
+    public void accept(NodeVisitor visitor) {
+        visitor.visit(this);
+    }
 
 }

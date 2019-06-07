@@ -5,65 +5,65 @@ import fjord.ast.type.Type;
 
 public abstract class Typar implements Type {
 
-  private final String ident;
+    private final String ident;
 
-  private Typar(String ident) {
-    this.ident = ident;
-  }
-
-  public String getIdent() {
-    return ident;
-  }
-
-  public static Typar typeVariable(String ident) {
-    return new TypeVariable(ident);
-  }
-
-  public static Typar staticHeadTypeVariable(String ident) {
-    return new StaticHeadTypeVariable(ident);
-  }
-
-  public static Typar anonymousTypeVariable() {
-    return new AnonymousTypeVariable();
-  }
-
-  public static class TypeVariable extends Typar {
-
-    public TypeVariable(String ident) {
-      super(ident);
+    private Typar(String ident) {
+        this.ident = ident;
     }
 
-    @Override
-    public void accept(NodeVisitor visitor) {
-      visitor.visit(this);
+    public static Typar typeVariable(String ident) {
+        return new TypeVariable(ident);
     }
 
-  }
-
-  public static class StaticHeadTypeVariable extends Typar {
-
-    public StaticHeadTypeVariable(String ident) {
-      super(ident);
+    public static Typar staticHeadTypeVariable(String ident) {
+        return new StaticHeadTypeVariable(ident);
     }
 
-    @Override
-    public void accept(NodeVisitor visitor) {
-      visitor.visit(this);
+    public static Typar anonymousTypeVariable() {
+        return new AnonymousTypeVariable();
     }
 
-  }
-
-  public static class AnonymousTypeVariable extends Typar {
-
-    public AnonymousTypeVariable() {
-      super("_");
+    public String getIdent() {
+        return ident;
     }
 
-    @Override
-    public void accept(NodeVisitor visitor) {
-      visitor.visit(this);
+    public static class TypeVariable extends Typar {
+
+        public TypeVariable(String ident) {
+            super(ident);
+        }
+
+        @Override
+        public void accept(NodeVisitor visitor) {
+            visitor.visit(this);
+        }
+
     }
 
-  }
+    public static class StaticHeadTypeVariable extends Typar {
+
+        public StaticHeadTypeVariable(String ident) {
+            super(ident);
+        }
+
+        @Override
+        public void accept(NodeVisitor visitor) {
+            visitor.visit(this);
+        }
+
+    }
+
+    public static class AnonymousTypeVariable extends Typar {
+
+        public AnonymousTypeVariable() {
+            super("_");
+        }
+
+        @Override
+        public void accept(NodeVisitor visitor) {
+            visitor.visit(this);
+        }
+
+    }
 
 }
